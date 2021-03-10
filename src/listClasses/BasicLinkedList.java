@@ -3,7 +3,12 @@ package listClasses;
 import java.util.*;
 
 public class BasicLinkedList<T> implements Iterable<T> {
+	/* We have both head and tail */
+	protected Node head, tail;
 	
+	/* size */
+	protected int listSize;
+		
 	/* Node definition */
 	protected class Node {
 		protected T data;
@@ -13,12 +18,15 @@ public class BasicLinkedList<T> implements Iterable<T> {
 			this.data = data;
 			next = null;
 		}
+		public T getData() {
+			return this.data;
+		}
 	}
 
 	/* List Iterator definition */
 	protected class ListIterator<T> implements Iterator<T>{
 		Node current;
-       
+		
 		public ListIterator(BasicLinkedList<T> list) { 
 			current = list.getFirst(); 
 		} 
@@ -46,11 +54,7 @@ public class BasicLinkedList<T> implements Iterable<T> {
     { 
         return new ListIterator<T>(this); 
     } 
-	/* We have both head and tail */
-	protected Node head, tail;
 	
-	/* size */
-	protected int listSize;
 
 	public int getSize() {
 		return listSize ;
@@ -123,11 +127,11 @@ public class BasicLinkedList<T> implements Iterable<T> {
 	}
 
 	public Node getFirst(){
-		return head;
+		return this.head;
 	}
 
 	public Node getLast(){
-		return tail;
+		return this.tail;
 	}
 
 	public T retrieveFirstElement(){

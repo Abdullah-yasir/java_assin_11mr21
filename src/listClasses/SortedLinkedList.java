@@ -12,7 +12,7 @@ import java.util.*;
  */
 
 public class SortedLinkedList<T> extends BasicLinkedList<T> {
-	private Comparator<T> comparator = Comparator.comparing();
+	private Comparator<T> comparator;
 
 	public SortedLinkedList<T> add(){return this;}
 
