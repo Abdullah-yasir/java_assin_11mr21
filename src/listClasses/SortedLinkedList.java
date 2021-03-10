@@ -14,6 +14,9 @@ import java.util.*;
 public class SortedLinkedList<T> extends BasicLinkedList<T> {
 	private Comparator<T> comparator;
 
-	public SortedLinkedList<T> add(){return this;}
+	public SortedLinkedList<T> add(T data){
+		throw new UnsupportedOperationException("This method is not implemented yet!");
+		return this;
+	}
 
 }

@@ -96,7 +96,8 @@ public class StudentTests {
 	
 	@Test
 	public void addTest(){
-		assertEquals("expected", "actual");
+		slist.add("some");
+		assertEquals("some", slist.getLast());
 	}
 
 	@Test
