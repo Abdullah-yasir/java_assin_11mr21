@@ -126,12 +126,16 @@ public class BasicLinkedList<T> implements Iterable<T> {
 		return this;
 	}
 
+	public Node getHead(){
+		return head;
+	}
+
 	public T getFirst(){
-		return this.head.getData();
+		return head.getData();
 	}
 
 	public T getLast(){
-		return this.tail.getData();
+		return tail.getData();
 	}
 
 	public T retrieveFirstElement(){
@@ -176,5 +180,21 @@ public class BasicLinkedList<T> implements Iterable<T> {
         tail = lastNodeInList;
 		return true;
 	}
+
+	public void printList(){
+        Node lastNodeInList = this.head;
+        if(lastNodeInList == null){
+            throw new NullPointerException("List is empty, populate it before printing");
+        } else {
+            System.out.print("LIST: ");
+            while(lastNodeInList.next !=null){
+                System.out.print(lastNodeInList.data + " ");
+                lastNodeInList = lastNodeInList.next;
+            }
+           if(lastNodeInList.next == null){
+               System.out.println(lastNodeInList.data + " ");
+           }
+        }
+    }
 	
 }

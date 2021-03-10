@@ -1,8 +1,11 @@
 package tests;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
 
 import listClasses.*;
 
@@ -28,6 +31,8 @@ public class StudentTests {
 
 	private BasicLinkedList<String> blist;
 	private SortedLinkedList<String> slist;
+	private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
 	// @Test
 	// public void test() {
@@ -85,11 +90,20 @@ public class StudentTests {
 
 	@Test
 	public void getReverseArrayListTest(){
-		assertEquals("expected", "actual");
+		ArrayList<String> newList = blist.getReverseArrayList(blist.getHead());
+		assertArrayEquals(new String[]{"bat", "rat","dog","cat"}, newList.toArray());
 	}
 	
 	@Test
 	public void addTest(){
 		assertEquals("expected", "actual");
 	}
+
+	@Test
+    public void printListTest(){
+        System.setOut(new PrintStream(outputStreamCaptor));
+        blist.printList();
+        assertEquals("LIST: cat dog rat bat", outputStreamCaptor.toString().stripTrailing());
+        System.setOut(standardOut);
+    }
 }
