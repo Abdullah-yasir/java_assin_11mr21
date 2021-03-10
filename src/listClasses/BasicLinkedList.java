@@ -57,7 +57,7 @@ public class BasicLinkedList<T> implements Iterable<T> {
 	
 
 	public int getSize() {
-		return listSize ;
+		return listSize+1;
 	}
 
 	protected Node reverseListRecursively(Node head) {
@@ -126,12 +126,12 @@ public class BasicLinkedList<T> implements Iterable<T> {
 		return this;
 	}
 
-	public Node getFirst(){
-		return this.head;
+	public T getFirst(){
+		return this.head.getData();
 	}
 
-	public Node getLast(){
-		return this.tail;
+	public T getLast(){
+		return this.tail.getData();
 	}
 
 	public T retrieveFirstElement(){
@@ -145,16 +145,36 @@ public class BasicLinkedList<T> implements Iterable<T> {
 	}
 
 	public Boolean remove(T data){
-		if(head == null) return false;
-		Node nodes = head;
-		while(nodes.next != null){
-			if(nodes.next.data == data){
-				nodes = nodes.next.next;
-				return true;
-			}
-			nodes = nodes.next;
-		}
-		return false;
+		// Store head node
+        Node temp = head, prev = null;
+ 
+        // If head node itself holds the key to be deleted
+        if (temp != null && temp.data == data) {
+            head = temp.next; // Changed head
+            return true;
+        }
+ 
+        // Search for the key to be deleted, keep track of
+        // the previous node as we need to change temp.next
+        while (temp != null && temp.data != data) {
+            prev = temp;
+            temp = temp.next;
+        }
+ 
+        // If key was not present in linked list
+        if (temp == null)
+            return false;
+ 
+        // Unlink the node from linked list
+        prev.next = temp.next;
+
+		// updating tail
+		Node lastNodeInList = this.head;
+        while(lastNodeInList.next != null){
+            lastNodeInList = lastNodeInList.next;
+        }
+        tail = lastNodeInList;
+		return true;
 	}
 	
 }

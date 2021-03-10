@@ -29,11 +29,11 @@ public class StudentTests {
 	private BasicLinkedList<String> blist;
 	private SortedLinkedList<String> slist;
 
-	@Test
-	public void test() {
+	// @Test
+	// public void test() {
 	
-		fail("Not yet implemented");
-	}
+	// 	fail("Not yet implemented");
+	// }
 
 	@Test
 	public void addToEndTest(){
@@ -42,17 +42,40 @@ public class StudentTests {
 
 	@Test
 	public void addToFrontTest(){
-		assertEquals("expected", "actual");
+		blist.addToFront("fox");
+		assertEquals("fox", blist.getFirst());
 	}
 
 	@Test
 	public void retrieveFirstElementTest(){
-		assertEquals("expected", "actual");
+		assertEquals("cat", blist.retrieveFirstElement());
 	}
 
 	@Test
 	public void retrieveLastElementTest(){
-		assertEquals("expected", "actual");
+		assertEquals("bat", blist.retrieveLastElement());
+	}
+
+	@Test
+	public void getFirstTest(){
+		assertEquals("cat", blist.getFirst());
+	}
+	
+	@Test
+	public void getLastTest(){
+		assertEquals("bat", blist.getLast());
+	}
+	
+	
+	@Test
+	public void removeTest(){
+		blist.remove("bat");
+		assertEquals("rat", blist.getLast());
+	}
+	
+	@Test
+	public void getSizeTest(){
+		assertEquals(4, blist.getSize());
 	}
 
 	@Test
@@ -64,24 +87,9 @@ public class StudentTests {
 	public void getReverseArrayListTest(){
 		assertEquals("expected", "actual");
 	}
-
-	@Test
-	public void getFirstTest(){
-		assertEquals("expected", "actual");
-	}
-
-	@Test
-	public void getLastTest(){
-		assertEquals("expected", "actual");
-	}
-
+	
 	@Test
 	public void addTest(){
-		assertEquals("expected", "actual");
-	}
-
-	@Test
-	public void removeTest(){
 		assertEquals("expected", "actual");
 	}
 }
