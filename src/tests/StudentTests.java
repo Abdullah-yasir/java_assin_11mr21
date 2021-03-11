@@ -17,7 +17,7 @@ import listClasses.*;
  * @author UMCP CS Department
  *
  */
-public class StudentTests extends BasicLinkedList<String> {
+public class StudentTests {
 
 	public StudentTests(){
 		this.blist = new BasicLinkedList<>();
@@ -33,24 +33,6 @@ public class StudentTests extends BasicLinkedList<String> {
 	private SortedLinkedList<String> slist;
 	private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-
-	protected class Node<T> {
-		protected T data;
-		protected Node<T> next;
-
-		protected Node(T data) {
-			this.data = data;
-			next = null;
-		}
-		public T getData() {
-			return this.data;
-		}
-	}
-	// @Test
-	// public void test() {
-	
-	// 	fail("Not yet implemented");
-	// }
 
 	@Test
 	public void addToEndTest(){
@@ -75,21 +57,21 @@ public class StudentTests extends BasicLinkedList<String> {
 
 	@Test
 	public void getFirstTest(){
-		Node<String> node = new Node<String>("cat");
-		assertEquals(node.getData(), blist.getFirst().getData());
+		
+		assertEquals("cat", blist.getFirst());
 	}
 	
 	@Test
 	public void getLastTest(){
-		Node<String> node = new Node<String>("bat");
-		assertEquals(node.getData(),blist.getLast().getData());
+		
+		assertEquals("bat",blist.getLast());
 	}
 	
 	
 	@Test
 	public void removeTest(){
 		blist.remove("bat");
-		assertEquals("rat", blist.getLast().getData());
+		assertEquals("rat", blist.getLast());
 	}
 	
 	@Test
@@ -99,7 +81,7 @@ public class StudentTests extends BasicLinkedList<String> {
 
 	@Test
 	public void getReverseListTest(){
-		assertEquals("expected", "actual");
+		fail("not yet implemented");
 	}
 
 	@Test

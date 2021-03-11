@@ -25,8 +25,6 @@ public class SortedLinkedList<T> extends BasicLinkedList<T> {
 		// };
 	}
 
-
-
 	public SortedLinkedList<T> add(T data){
 		// throw new UnsupportedOperationException("This method is not implemented yet!");
 		Node nodeToAdd = new Node(data);

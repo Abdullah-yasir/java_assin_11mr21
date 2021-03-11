@@ -29,6 +29,6 @@ public class SampleDriver {
 		}
 		sortedList.remove("Red");
 		System.out.print("\nAfter remove in sorted list first is: ");
-		System.out.println(sortedList.getFirst())s;
+		System.out.println(sortedList.getFirst());
 	}
 }

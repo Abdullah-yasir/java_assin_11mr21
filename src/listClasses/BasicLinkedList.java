@@ -28,7 +28,7 @@ public class BasicLinkedList<T> implements Iterable<T> {
 		Node current;
 		
 		public ListIterator(BasicLinkedList<T> list) { 
-			current = list.getFirst(); 
+			current = list.getHead(); 
 		} 
 
 		 // returns false if next element does not exist 
@@ -129,12 +129,12 @@ public class BasicLinkedList<T> implements Iterable<T> {
 		return head;
 	}
 
-	public Node getFirst(){
-		return head;
+	public T getFirst(){
+		return head.getData();
 	}
 
-	public Node getLast(){
-		return tail;
+	public T getLast(){
+		return tail.getData();
 	}
 
 	public T retrieveFirstElement(){
