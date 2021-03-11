@@ -55,7 +55,6 @@ public class BasicLinkedList<T> implements Iterable<T> {
         return new ListIterator(this); 
     } 
 	
-
 	public int getSize() {
 		return listSize+1;
 	}
@@ -93,20 +92,20 @@ public class BasicLinkedList<T> implements Iterable<T> {
 
 	public BasicLinkedList<T> addToEnd(T data){
 		Node nodeToAdd = new Node(data);
+		Node current = head;
 
         // if head is null, assign incoming node to it
-        if(head == null){
+        if(current == null){
             head = tail = nodeToAdd;
             return this;
         }
 
-        Node nodes = head;
         // keep looping until we find a node with reference to null in its 'next'
-        while(nodes.next != null){
-            nodes = nodes.next;
+        while(current.next != null){
+            current = current.next;
         }
         // append nodeToAdd to the last node in list
-		nodes.next = nodeToAdd;
+		current.next = nodeToAdd;
 		tail = nodeToAdd;
 		listSize++;
 		return this;

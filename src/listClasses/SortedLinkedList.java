@@ -29,7 +29,26 @@ public class SortedLinkedList<T> extends BasicLinkedList<T> {
 
 	public SortedLinkedList<T> add(T data){
 		// throw new UnsupportedOperationException("This method is not implemented yet!");
+		Node nodeToAdd = new Node(data);
+		Node current = head;
+		
+		// comparator.compare(head, nodeToAdd);
+        // if head is null, assign incoming node to it
+        if(current == null){
+            head = tail = nodeToAdd;
+            return this;
+        }
+
+        // keep looping until we find a node with reference to null in its 'next'
+        while(current.next != null){
+            current = current.next;
+        }
+        // append nodeToAdd to the last node in list
+		current.next = nodeToAdd;
+		tail = nodeToAdd;
+		listSize++;
 		return this;
+		
 	}
 
 
