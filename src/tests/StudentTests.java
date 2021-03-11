@@ -17,11 +17,11 @@ import listClasses.*;
  * @author UMCP CS Department
  *
  */
-public class StudentTests {
+public class StudentTests extends BasicLinkedList<String> {
 
 	public StudentTests(){
 		this.blist = new BasicLinkedList<>();
-		this.slist = new SortedLinkedList<>();
+		this.slist = new SortedLinkedList<>(String.CASE_INSENSITIVE_ORDER);
 
 		blist.addToEnd("cat");
 		blist.addToEnd("dog");
@@ -34,6 +34,18 @@ public class StudentTests {
 	private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
+	protected class Node<T> {
+		protected T data;
+		protected Node<T> next;
+
+		protected Node(T data) {
+			this.data = data;
+			next = null;
+		}
+		public T getData() {
+			return this.data;
+		}
+	}
 	// @Test
 	// public void test() {
 	
@@ -63,19 +75,21 @@ public class StudentTests {
 
 	@Test
 	public void getFirstTest(){
-		assertEquals("cat", blist.getFirst());
+		Node<String> node = new Node<String>("cat");
+		assertEquals(node.getData(), blist.getFirst().getData());
 	}
 	
 	@Test
 	public void getLastTest(){
-		assertEquals("bat", blist.getLast());
+		Node<String> node = new Node<String>("bat");
+		assertEquals(node.getData(),blist.getLast().getData());
 	}
 	
 	
 	@Test
 	public void removeTest(){
 		blist.remove("bat");
-		assertEquals("rat", blist.getLast());
+		assertEquals("rat", blist.getLast().getData());
 	}
 	
 	@Test

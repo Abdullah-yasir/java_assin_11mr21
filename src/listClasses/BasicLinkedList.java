@@ -24,7 +24,7 @@ public class BasicLinkedList<T> implements Iterable<T> {
 	}
 
 	/* List Iterator definition */
-	protected class ListIterator<T> implements Iterator<T>{
+	protected class ListIterator implements Iterator<T>{
 		Node current;
 		
 		public ListIterator(BasicLinkedList<T> list) { 
@@ -52,7 +52,7 @@ public class BasicLinkedList<T> implements Iterable<T> {
 	 // return Iterator instance 
     public Iterator<T> iterator() 
     { 
-        return new ListIterator<T>(this); 
+        return new ListIterator(this); 
     } 
 	
 
@@ -130,12 +130,12 @@ public class BasicLinkedList<T> implements Iterable<T> {
 		return head;
 	}
 
-	public T getFirst(){
-		return head.getData();
+	public Node getFirst(){
+		return head;
 	}
 
-	public T getLast(){
-		return tail.getData();
+	public Node getLast(){
+		return tail;
 	}
 
 	public T retrieveFirstElement(){
@@ -146,6 +146,38 @@ public class BasicLinkedList<T> implements Iterable<T> {
 	public T retrieveLastElement(){
 		if(tail == null) return null;
 		return tail.data;
+	}
+
+	public Boolean remove(T data, Comparator<T> c){
+		// Store head node
+        Node temp = head, prev = null;
+        // If head node itself holds the key to be deleted
+        if (temp != null && temp.data == data) {
+            head = temp.next; // Changed head
+            return true;
+        }
+ 
+        // Search for the key to be deleted, keep track of
+        // the previous node as we need to change temp.next
+        while (temp != null && temp.data != data) {
+            prev = temp;
+            temp = temp.next;
+        }
+ 
+        // If key was not present in linked list
+        if (temp == null)
+            return false;
+ 
+        // Unlink the node from linked list
+        prev.next = temp.next;
+
+		// updating tail
+		Node lastNodeInList = this.head;
+        while(lastNodeInList.next != null){
+            lastNodeInList = lastNodeInList.next;
+        }
+        tail = lastNodeInList;
+		return true;
 	}
 
 	public Boolean remove(T data){
@@ -180,6 +212,7 @@ public class BasicLinkedList<T> implements Iterable<T> {
         tail = lastNodeInList;
 		return true;
 	}
+
 
 	public void printList(){
         Node lastNodeInList = this.head;
