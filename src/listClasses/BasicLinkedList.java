@@ -42,11 +42,6 @@ public class BasicLinkedList<T> implements Iterable<T> {
 			current = current.next; 
 			return data; 
 		} 
-		
-		// implement if needed 
-		public void remove() { 
-			throw new UnsupportedOperationException(); 
-		} 
 	}
 
 	 // return Iterator instance 
