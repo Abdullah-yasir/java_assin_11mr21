@@ -138,44 +138,23 @@ public class BasicLinkedList<T> implements Iterable<T> {
 	}
 
 	public T retrieveFirstElement(){
+		T res;
 		if(head == null) return null;
-		return head.data;
+		res =  head.data;
+		this.remove(head.data);
+		return res;
 	}
 
 	public T retrieveLastElement(){
+		T res;
 		if(tail == null) return null;
-		return tail.data;
+		res = tail.data;
+		this.remove(tail.data);
+		return res;
 	}
 
 	public Boolean remove(T data, Comparator<T> c){
-		// Store head node
-        Node temp = head, prev = null;
-        // If head node itself holds the key to be deleted
-        if (temp != null && temp.data == data) {
-            head = temp.next; // Changed head
-            return true;
-        }
- 
-        // Search for the key to be deleted, keep track of
-        // the previous node as we need to change temp.next
-        while (temp != null && temp.data != data) {
-            prev = temp;
-            temp = temp.next;
-        }
- 
-        // If key was not present in linked list
-        if (temp == null)
-            return false;
- 
-        // Unlink the node from linked list
-        prev.next = temp.next;
-
-		// updating tail
-		Node lastNodeInList = this.head;
-        while(lastNodeInList.next != null){
-            lastNodeInList = lastNodeInList.next;
-        }
-        tail = lastNodeInList;
+		this.remove(data);
 		return true;
 	}
 
