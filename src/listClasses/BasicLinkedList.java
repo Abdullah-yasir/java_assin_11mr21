@@ -24,35 +24,57 @@ public class BasicLinkedList<T> implements Iterable<T> {
 	}
 
 	/* List Iterator definition */
-	protected class ListIterator implements Iterator<T>{
-		Node current;
+	// protected class ListIterator implements Iterator<T>{
+	// 	Node current;
 		
-		public ListIterator(BasicLinkedList<T> list) { 
-			current = list.getHead(); 
-		} 
+	// 	public ListIterator(BasicLinkedList<T> list) { 
+	// 		current = list.getHead(); 
+	// 	} 
 
-		 // returns false if next element does not exist 
-		public boolean hasNext() { 
-			return current != null; 
-		} 
+	// 	 // returns false if next element does not exist 
+	// 	public boolean hasNext() { 
+	// 		return current != null; 
+	// 	} 
 		
-		// return current data and update pointer 
-		public T next() { 
-			T data = current.data; 
-			current = current.next; 
-			return data; 
-		} 
-	}
+	// 	// return current data and update pointer 
+	// 	public T next() { 
+	// 		T data = current.data; 
+	// 		current = current.next; 
+	// 		return data; 
+	// 	} 
+	// }
 
-	 // return Iterator instance 
-    public Iterator<T> iterator() 
-    { 
-        return new ListIterator(this); 
+	// return Iterator instance 
+
+	// iterator using anonymous inner class
+    public Iterator<T> iterator() { 
+		
+        return new Iterator<T>(){
+			Node current;
+			
+			{ 
+				current = head; 
+			}
+
+			// returns false if next element does not exist 
+			public boolean hasNext() { 
+				return current != null; 
+			} 
+			
+			// return current data and update pointer 
+			public T next() { 
+				T data = current.data; 
+				current = current.next; 
+				return data; 
+			} 
+		};
     } 
-	
-	public int getSize() {
-		return listSize+1;
+
+	public int getSize(){
+		if(head == null) return 0;
+		return listSize;
 	}
+
 
 	protected Node reverseListRecursively(Node head) {
         if (head == null) {
