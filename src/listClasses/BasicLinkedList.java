@@ -170,19 +170,19 @@ public class BasicLinkedList<T> implements Iterable<T> {
 		return res;
 	}
 
-	public Boolean remove(T data, Comparator<T> c){
+	public BasicLinkedList<T> remove(T data, Comparator<T> c){
 		this.remove(data);
-		return true;
+		return this;
 	}
 
-	public Boolean remove(T data){
+	public BasicLinkedList<T> remove(T data){
 		// Store head node
         Node temp = head, prev = null;
  
         // If head node itself holds the key to be deleted
         if (temp != null && temp.data == data) {
             head = temp.next; // Changed head
-            return true;
+            return this;
         }
  
         // Search for the key to be deleted, keep track of
@@ -194,7 +194,7 @@ public class BasicLinkedList<T> implements Iterable<T> {
  
         // If key was not present in linked list
         if (temp == null)
-            return false;
+            return this;
  
         // Unlink the node from linked list
         prev.next = temp.next;
@@ -205,7 +205,7 @@ public class BasicLinkedList<T> implements Iterable<T> {
             lastNodeInList = lastNodeInList.next;
         }
         tail = lastNodeInList;
-		return true;
+		return this;
 	}
 
 
