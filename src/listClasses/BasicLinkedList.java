@@ -94,7 +94,7 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
         return lastNodeInList;
     }
 
-	public ArrayList<T> getReverseArrayList(Node head){
+	public ArrayList<T> getReverseArrayList(){
         Node currentNode =  this.reverseListRecursively(this.head);
 		ArrayList<T> arrList = new ArrayList<T>();
         // int arrayList = new int[listSize+1];
