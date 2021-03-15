@@ -18,12 +18,6 @@ public class SortedLinkedList<T> extends BasicLinkedList<T> {
 		this.comparator = c;
 	}
 
-	class SortListComparator implements Comparator<String>{
-		public int compare(String s1, String s2) {
-			return s1.length() - s2.length();
-		}
-	}
-
 	public SortedLinkedList<T> add(T data){
 		if (data == null) {
 			return this;
@@ -48,8 +42,8 @@ public class SortedLinkedList<T> extends BasicLinkedList<T> {
 				Node next = head.next;
 				Node prev = head;
 				while (comparator.compare(data.toString(), next.data.toString()) > 0) {
-				prev = next;
-				next = next.next;
+					prev = next;
+					next = next.next;
 				}
 				// Do the actual insertion
 				prev.next = newnode;

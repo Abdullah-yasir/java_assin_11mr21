@@ -81,12 +81,18 @@ public class StudentTests {
 
 	@Test
 	public void getReverseListTest(){
-		fail("not yet implemented");
+		BasicLinkedList<String> listReversed = new BasicLinkedList<>();
+		BasicLinkedList<String> list = blist.getReversList();
+		listReversed.addToFront("cat").addToFront("dog").addToFront("rat").addToFront("bat");
+		for (String entry : list) {
+			assertEquals(entry, listReversed.retrieveFirstElement());
+		}
+
 	}
 
 	@Test
 	public void getReverseArrayListTest(){
-		ArrayList<String> newList = blist.getReverseArrayList(blist.getHead());
+		ArrayList<String> newList = blist.getReverseArrayList();
 		assertArrayEquals(new String[]{"bat", "rat","dog","cat"}, newList.toArray());
 	}
 	

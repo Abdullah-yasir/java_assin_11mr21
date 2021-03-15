@@ -180,7 +180,28 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 	}
 
 	public BasicLinkedList<T> remove(T data, Comparator<T> c){
-		this.remove(data);
+		// this.remove(data);
+		// return this;
+		Node temp = head, prev = null;
+		// If head node itself holds the key to be deleted
+        if (temp != null && temp.data == data) {
+            head = temp.next; // Changed head
+            return this;
+        }
+
+		// Search for the key to be deleted, keep track of
+        // the previous node as we need to change temp.next
+        while (temp != null) {
+			// remove element if condition is true;
+			if(c.compare(temp.getData(), data) == 0){
+				// Unlink the node from linked list
+				prev.next = temp.next;
+			}
+			
+            prev = temp;
+            temp = temp.next;
+        }
+		
 		return this;
 	}
 
