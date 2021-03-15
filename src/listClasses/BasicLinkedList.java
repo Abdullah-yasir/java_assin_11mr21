@@ -27,29 +27,7 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 		}
 	}
 
-	/* List Iterator definition */
-	// protected class ListIterator implements Iterator<T>{
-	// 	Node current;
-		
-	// 	public ListIterator(BasicLinkedList<T> list) { 
-	// 		current = list.getHead(); 
-	// 	} 
-
-	// 	 // returns false if next element does not exist 
-	// 	public boolean hasNext() { 
-	// 		return current != null; 
-	// 	} 
-		
-	// 	// return current data and update pointer 
-	// 	public T next() { 
-	// 		T data = current.data; 
-	// 		current = current.next; 
-	// 		return data; 
-	// 	} 
-	// }
-
-	// return Iterator instance 
-
+	
 	// iterator using anonymous inner class
     public Iterator<T> iterator() { 
         return new Iterator<T>(){
