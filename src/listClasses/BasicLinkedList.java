@@ -52,10 +52,8 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 
 	// iterator using anonymous inner class
     public Iterator<T> iterator() { 
-		
         return new Iterator<T>(){
 			Node current;
-			
 			{ 
 				current = head; 
 			}
@@ -64,7 +62,6 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 			public boolean hasNext() { 
 				return current != null; 
 			} 
-			
 			// return current data and update pointer 
 			public T next() { 
 				T data = current.data; 
@@ -93,6 +90,14 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 
         return lastNodeInList;
     }
+
+	public BasicLinkedList<T> getReversList(){
+		// create new list
+		BasicLinkedList<T> list = new BasicLinkedList<T>();
+		// reverse current list and set it to new list's header
+		list.head = reverseListRecursively(this.head);
+		return list;
+	}
 
 	public ArrayList<T> getReverseArrayList(){
         Node currentNode =  this.reverseListRecursively(this.head);
