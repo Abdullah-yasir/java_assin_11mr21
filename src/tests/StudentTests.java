@@ -35,6 +35,11 @@ public class StudentTests {
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
 	@Test
+	public void getSizeTest(){
+		assertEquals(4, blist.getSize());
+	}
+
+	@Test
 	public void addToEndTest(){
 		assertEquals("bat", blist.getLast());
 	}
@@ -74,10 +79,6 @@ public class StudentTests {
 		assertEquals("rat", blist.getLast());
 	}
 	
-	@Test
-	public void getSizeTest(){
-		assertEquals(4, blist.getSize());
-	}
 
 	@Test
 	public void getReverseListTest(){
@@ -98,8 +99,8 @@ public class StudentTests {
 	
 	@Test
 	public void addTest(){
-		slist.add("some");
-		assertEquals("some", slist.getLast());
+		slist.add("some").add("xray").add("blue");
+		assertEquals("xray", slist.getLast());
 	}
 
 	@Test

@@ -73,7 +73,7 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 
 	public int getSize(){
 		if(head == null) return 0;
-		return listSize;
+		return listSize+1;
 	}
 
 
@@ -180,8 +180,7 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 	}
 
 	public BasicLinkedList<T> remove(T data, Comparator<T> c){
-		// this.remove(data);
-		// return this;
+		
 		Node temp = head, prev = null;
 		// If head node itself holds the key to be deleted
         if (temp != null && temp.data == data) {
@@ -196,12 +195,19 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 			if(c.compare(temp.getData(), data) == 0){
 				// Unlink the node from linked list
 				prev.next = temp.next;
+				listSize--;
 			}
-			
+
             prev = temp;
             temp = temp.next;
         }
-		
+
+		// updating tail
+		Node lastNodeInList = this.head;
+        while(lastNodeInList.next != null){
+            lastNodeInList = lastNodeInList.next;
+        }
+        tail = lastNodeInList;
 		return this;
 	}
 
@@ -228,6 +234,7 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
  
         // Unlink the node from linked list
         prev.next = temp.next;
+		listSize--;
 
 		// updating tail
 		Node lastNodeInList = this.head;
