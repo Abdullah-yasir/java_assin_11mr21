@@ -2,13 +2,17 @@ package listClasses;
 
 import java.util.*;
 
-public class BasicLinkedList<T> implements Iterable<T> {
+public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> {
 	/* We have both head and tail */
 	protected Node head, tail;
-	
 	/* size */
 	protected int listSize;
-		
+	
+	public BasicLinkedList(){
+		this.head =null;
+		this.tail = null;
+		listSize=0;
+	}
 	/* Node definition */
 	protected class Node {
 		protected T data;
