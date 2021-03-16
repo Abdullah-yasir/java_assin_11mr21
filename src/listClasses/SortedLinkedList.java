@@ -12,9 +12,9 @@ import java.util.*;
  */
 
 public class SortedLinkedList<T> extends BasicLinkedList<T> {
-	private Comparator<String> comparator ;
+	private Comparator<T> comparator ;
 
-	public SortedLinkedList(Comparator<String> c){
+	public SortedLinkedList(Comparator<T> c){
 		this.comparator = c;
 	}
 	
@@ -27,6 +27,12 @@ public class SortedLinkedList<T> extends BasicLinkedList<T> {
 		throw new UnsupportedOperationException("This operation is invalid for sorted list");
 	}
 
+	public SortedLinkedList<T> remove(T data){
+		remove(data, this.comparator);
+		return this;
+	}
+
+
 	public SortedLinkedList<T> add(T data){
 		if (data == null) {
 			return this;
@@ -38,19 +44,19 @@ public class SortedLinkedList<T> extends BasicLinkedList<T> {
 		head = tail = new Node(data);
 		} else {
 			// Check if it needs to go right at the head
-			if (comparator.compare(data.toString(), head.data.toString()) <= 0) {
+			if (comparator.compare(data, head.data) <= 0) {
 				newnode.next = head;
 				head = newnode;
 			}
 			// Check if it needs to go right at the tail
-			else if (comparator.compare(data.toString(), tail.data.toString()) >= 0) {
+			else if (comparator.compare(data, tail.data) >= 0) {
 				tail.next = newnode;
 				tail = newnode;
 			} else {
 				// It needs to be inserted into the middle of the list
 				Node next = head.next;
 				Node prev = head;
-				while (comparator.compare(data.toString(), next.data.toString()) > 0) {
+				while (comparator.compare(data, next.data) > 0) {
 					prev = next;
 					next = next.next;
 				}

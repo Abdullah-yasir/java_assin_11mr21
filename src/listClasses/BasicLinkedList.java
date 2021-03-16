@@ -55,7 +55,7 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 	}
 
 
-	protected Node reverseListRecursively(Node head) {
+	private Node reverseListRecursively(Node head) {
         if (head == null) {
             return null;
         }
@@ -189,7 +189,7 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 		return this;
 	}
 
-	public BasicLinkedList<T> remove(T data){
+	private BasicLinkedList<T> remove(T data){
 		// Store head node
         Node temp = head, prev = null;
  
