@@ -17,6 +17,15 @@ public class SortedLinkedList<T> extends BasicLinkedList<T> {
 	public SortedLinkedList(Comparator<String> c){
 		this.comparator = c;
 	}
+	
+	@Override
+	public BasicLinkedList<T> addToFront(T data){
+		throw new UnsupportedOperationException("This operation is invalid for sorted list");
+	}
+	@Override
+	public BasicLinkedList<T> addToEnd(T data){
+		throw new UnsupportedOperationException("This operation is invalid for sorted list");
+	}
 
 	public SortedLinkedList<T> add(T data){
 		if (data == null) {
