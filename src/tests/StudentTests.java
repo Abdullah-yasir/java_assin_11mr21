@@ -75,7 +75,7 @@ public class StudentTests {
 	
 	@Test
 	public void removeTest(){
-		blist.remove("bat");
+		blist.remove("bat", String.CASE_INSENSITIVE_ORDER);
 		assertEquals("rat", blist.getLast());
 	}
 	
