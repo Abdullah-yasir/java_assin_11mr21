@@ -51,7 +51,7 @@ public class BasicLinkedList<T> extends java.lang.Object implements Iterable<T> 
 
 	public int getSize(){
 		if(head == null) return 0;
-		return listSize+1;
+		return listSize;
 	}
 
 
